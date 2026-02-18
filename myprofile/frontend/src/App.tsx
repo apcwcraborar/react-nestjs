@@ -112,9 +112,9 @@ export default function App() {
     <main className="container">
       <section className="card">
         <h1>Personal Profile</h1>
-        <p><strong>Name:</strong> Your Name</p>
-        <p><strong>Role:</strong> Full-Stack Developer</p>
-        <p><strong>Bio:</strong> I build web apps with React, NestJS, and Supabase.</p>
+        <p><strong>Name:</strong> Bogart</p>
+        <p><strong>Role:</strong> Full-time doesn't know what's happening</p>
+        <p><strong>Bio:</strong> i just asked copilot, please dont attack me</p>
       </section>
 
       <section className="card">
