@@ -32,7 +32,7 @@ export class GuestbookService {
 
   async getAll(): Promise<GuestbookEntry[]> {
     const { data, error } = await this.supabase
-      .from('guestbook_entries')
+      .from('guestbook')
       .select('*')
       .order('created_at', { ascending: false });
 
@@ -45,7 +45,7 @@ export class GuestbookService {
 
   async create(name: string, message: string): Promise<GuestbookEntry> {
     const { data, error } = await this.supabase
-      .from('guestbook_entries')
+      .from('guestbook')
       .insert({ name, message })
       .select('*')
       .single();
@@ -63,7 +63,7 @@ export class GuestbookService {
     message: string,
   ): Promise<GuestbookEntry> {
     const { data, error } = await this.supabase
-      .from('guestbook_entries')
+      .from('guestbook')
       .update({ name, message })
       .eq('id', id)
       .select('*')
@@ -82,7 +82,7 @@ export class GuestbookService {
 
   async delete(id: string): Promise<{ deletedId: string }> {
     const { data, error } = await this.supabase
-      .from('guestbook_entries')
+      .from('guestbook')
       .delete()
       .eq('id', id)
       .select('id')

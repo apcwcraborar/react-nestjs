@@ -15,15 +15,15 @@ const supabase_js_1 = require("@supabase/supabase-js");
 let GuestbookService = class GuestbookService {
     constructor() {
         const supabaseUrl = process.env.SUPABASE_URL;
-        const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY ?? process.env.SUPABASE_ANON_KEY;
+        const supabaseKey = process.env.SUPABASE_ANON_KEY ?? process.env.SUPABASE_SERVICE_ROLE_KEY;
         if (!supabaseUrl || !supabaseKey) {
-            throw new Error('Missing SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY (or SUPABASE_ANON_KEY) environment variables.');
+            throw new Error('Missing SUPABASE_URL and SUPABASE_ANON_KEY (or SUPABASE_SERVICE_ROLE_KEY) environment variables.');
         }
         this.supabase = (0, supabase_js_1.createClient)(supabaseUrl, supabaseKey);
     }
     async getAll() {
         const { data, error } = await this.supabase
-            .from('guestbook_entries')
+            .from('guestbook')
             .select('*')
             .order('created_at', { ascending: false });
         if (error) {
@@ -33,7 +33,7 @@ let GuestbookService = class GuestbookService {
     }
     async create(name, message) {
         const { data, error } = await this.supabase
-            .from('guestbook_entries')
+            .from('guestbook')
             .insert({ name, message })
             .select('*')
             .single();
@@ -44,7 +44,7 @@ let GuestbookService = class GuestbookService {
     }
     async update(id, name, message) {
         const { data, error } = await this.supabase
-            .from('guestbook_entries')
+            .from('guestbook')
             .update({ name, message })
             .eq('id', id)
             .select('*')
@@ -59,7 +59,7 @@ let GuestbookService = class GuestbookService {
     }
     async delete(id) {
         const { data, error } = await this.supabase
-            .from('guestbook_entries')
+            .from('guestbook')
             .delete()
             .eq('id', id)
             .select('id')
