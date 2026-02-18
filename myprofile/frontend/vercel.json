@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/api/(.*)",
-      "destination": "https://YOUR-BACKEND-PROJECT.vercel.app/$1"
+      "destination": "https://backend-react-nestjs.vercel.app/$1"
     }
   ]
 }
